@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-color: #FFFFFF;
+  --text-color: #1A1A1A;
+}
+
+.dark {
+  --bg-color: #121212;
+  --text-color: #E0E0E0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+}
+
+a,
+svg {
+  color: var(--text-color);
+}
