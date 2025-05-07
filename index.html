@@ -1,56 +1,82 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/waving-hand.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module">
+      import "@fontsource/poppins/400.css";
+      import "@fontsource/poppins/600.css";
+      import { loadTheme } from "/src/theme.ts";
+      loadTheme();
+    </script>
+    <link rel="stylesheet" href="/src/index.css" />
+    <title>Adam Borowski</title>
+  </head>
 
-<head>
-  <script type="module">
-    import { loadTheme } from '/src/theme.ts';
-    loadTheme();
-  </script>
-  <meta charset="UTF-8" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/src/index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <title>Adam Borowski</title>
-</head>
-
-<body>
-  <div id="app" class="min-h-screen flex flex-col items-center justify-between">
-    <div class="flex-1 flex items-center justify-center">
-      <div class="text-center">
-        <h1 class="text-7xl font-bold mb-4">Adam<br />Borowski</h1>
-        <p class="text-2xl mt-4 mb-8">C# | .NET | React | Software Engineer</p>
-        <div class="flex justify-center gap-6 mt-8">
-          <a target="_blank" href="https://github.com/hikanio" class="text-4xl" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a target="_blank" href="https://www.linkedin.com/in/adam-borowski-3a9276241" class="text-4xl"
-            aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <!-- <a href="mailto:contact@example.com" class="text-4xl" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a> -->
+  <body>
+    <div
+      id="app"
+      class="min-h-screen flex flex-col items-center justify-between"
+    >
+      <div class="flex-1 flex items-center justify-center">
+        <div class="text-center">
+          <h1 class="text-7xl font-bold mb-4">Adam<br />Borowski</h1>
+          <p class="text-2xl mt-4 mb-8">
+            C# | .NET | React | Software Engineer
+          </p>
+          <div class="flex justify-center gap-6 mt-8" id="social-links"></div>
         </div>
       </div>
+      <div
+        class="flex items-center justify-center gap-4 sm:gap-6 p-6 sm:p-16 w-full mt-auto"
+      >
+        <div id="theme-toggle-container" class="flex items-center"></div>
+        <span class="flex items-center text-sm sm:text-base"
+          >&copy; 2025 Adam Borowski</span
+        >
+      </div>
     </div>
-    <div class="flex items-center justify-center gap-4 sm:gap-6 p-6 sm:p-16 w-full mt-auto">
-      <div id="theme-toggle-container" class="flex items-center"></div>
-      <span class="flex items-center text-sm sm:text-base">&copy; 2025 Adam Borowski</span>
-    </div>
-  </div>
-  <script type="module">
-    import { createThemeToggle } from '/src/components/ThemeToggle.ts';
+    <script type="module">
+      import { createThemeToggle } from "/src/components/ThemeToggle.ts";
+      import { GitHubIcon } from "/src/icons/GitHubIcon.ts";
+      import { LinkedInIcon } from "/src/icons/LinkedInIcon.ts";
+      import { EnvelopeIcon } from "/src/icons/EnvelopeIcon.ts";
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const themeToggleContainer = document.getElementById('theme-toggle-container');
-      if (themeToggleContainer) {
-        const themeToggle = createThemeToggle();
-        themeToggleContainer.appendChild(themeToggle);
-      }
-    });
-  </script>
-</body>
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggleContainer = document.getElementById(
+          "theme-toggle-container",
+        );
+        if (themeToggleContainer) {
+          const themeToggle = createThemeToggle();
+          themeToggleContainer.appendChild(themeToggle);
+        }
 
+        const socialLinksContainer = document.getElementById("social-links");
+        if (socialLinksContainer) {
+          const githubLink = document.createElement("a");
+          githubLink.href = "https://github.com/hikanio";
+          githubLink.target = "_blank";
+          githubLink.setAttribute("aria-label", "GitHub");
+          githubLink.innerHTML = GitHubIcon();
+          socialLinksContainer.appendChild(githubLink);
+
+          const linkedInLink = document.createElement("a");
+          linkedInLink.href =
+            "https://www.linkedin.com/in/adam-borowski-3a9276241";
+          linkedInLink.target = "_blank";
+          linkedInLink.setAttribute("aria-label", "LinkedIn");
+          linkedInLink.innerHTML = LinkedInIcon();
+          socialLinksContainer.appendChild(linkedInLink);
+          /* 
+        const emailLink = document.createElement('a');
+        emailLink.href = 'mailto:contact@example.com';
+        emailLink.setAttribute('aria-label', 'Email');
+        emailLink.innerHTML = EnvelopeIcon();
+        socialLinksContainer.appendChild(emailLink);
+        */
+        }
+      });
+    </script>
+  </body>
 </html>
