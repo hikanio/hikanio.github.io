@@ -2,19 +2,19 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg-color: #FFFFFF;
-  --text-color: #1A1A1A;
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
 }
 
 .dark {
   --bg-color: #121212;
-  --text-color: #E0E0E0;
+  --text-color: #e0e0e0;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 a,
