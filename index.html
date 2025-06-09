@@ -60,6 +60,9 @@
           githubLink.target = "_blank";
           githubLink.setAttribute("aria-label", "GitHub");
           githubLink.innerHTML = GitHubIcon();
+          githubLink.addEventListener("click", () => {
+            if (window.umami) umami.track("Click social GitHub");
+          });
           socialLinksContainer.appendChild(githubLink);
 
           const linkedInLink = document.createElement("a");
@@ -68,6 +71,9 @@
           linkedInLink.target = "_blank";
           linkedInLink.setAttribute("aria-label", "LinkedIn");
           linkedInLink.innerHTML = LinkedInIcon();
+          linkedInLink.addEventListener("click", () => {
+            if (window.umami) umami.track("Click social LinkedIn");
+          });
           socialLinksContainer.appendChild(linkedInLink);
           /* 
         const emailLink = document.createElement('a');
